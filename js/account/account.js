@@ -141,6 +141,26 @@ function addEmployee() {
     var lastName = document.getElementById("lastName").value;
     var role = document.getElementById("role").value;
     var departmentId = document.getElementById("departmentId").value;
+    resetValidateInputEm("valUsernameEm");
+    if(username === ""){
+        valdidateInputEm("This field cannot be blank", "valUsernameEm");
+        return;
+    }
+    resetValidateInputEm("valid-firstName");
+    if(firstName === ""){
+        valdidateInputEm("This field cannot be blank", "valid-firstName");
+        return;
+    }
+    resetValidateInputEm("valid-lastName");
+    if(lastName === ""){
+        valdidateInputEm("This field cannot be blank", "valid-lastName");
+        return;
+    }
+    resetValidateInputEm("valid-department");
+    if(departmentId === ""){
+        valdidateInputEm("Please choose a department", "valid-department");
+        return;
+    }
     var account = {
         username: username,
         password: password,
@@ -178,6 +198,14 @@ function addEmployee() {
         }
     });
 }
+function valdidateInputEm(str, id){
+    document.getElementById(id).innerHTML = str;
+    document.getElementById(id).style.display = "block";
+    
+}
+function resetValidateInputEm(id){
+    document.getElementById(id).style.display = "none";
+}
 // mở cập nhật modal
 function openUpdateEmModal(id) {
     renderSelectDeptEm();
@@ -199,7 +227,7 @@ function renderAccUpdate(id) {
             document.getElementById("firstName").value = data.firstName;
             document.getElementById("lastName").value = data.lastName;
             document.getElementById("role").value = data.role;
-            data.department == null ? document.getElementById("departmentId").value = "" : document.getElementById("departmentId").value = data.department.id;
+            data.department === null ? document.getElementById("departmentId").value = "" : document.getElementById("departmentId").value = data.department.id;
         },
         error(jqXHR, textStatus, errorThrown) {
             console.log(jqXHR);
@@ -220,6 +248,26 @@ function updateEmployee() {
     var lastName = document.getElementById("lastName").value;
     var role = document.getElementById("role").value;
     var departmentId = document.getElementById("departmentId").value;
+    resetValidateInputEm("valUsernameEm");
+    if(username === ""){
+        valdidateInputEm("This field cannot be blank", "valUsernameEm");
+        return;
+    }
+    resetValidateInputEm("valid-firstName");
+    if(firstName === ""){
+        valdidateInputEm("This field cannot be blank", "valid-firstName");
+        return;
+    }
+    resetValidateInputEm("valid-lastName");
+    if(lastName === ""){
+        valdidateInputEm("This field cannot be blank", "valid-lastName");
+        return;
+    }
+    resetValidateInputEm("valid-department");
+    if(departmentId === ""){
+        valdidateInputEm("Please choose a department", "valid-department");
+        return;
+    }
     var account = {
         username: username,
         password: password,
@@ -458,6 +506,10 @@ function resetModalEm() {
     document.getElementById("lastName").value = "";
     document.getElementById("role").value = "EMPLOYEE";
     document.getElementById("departmentId").value = "";
+    resetValidateInputEm("valUsernameEm");
+    resetValidateInputEm("valid-firstName");
+    resetValidateInputEm("valid-lastName");
+    resetValidateInputEm("valid-department");
 }
 function resetSortEm() {
     sortFieldEm = "id";

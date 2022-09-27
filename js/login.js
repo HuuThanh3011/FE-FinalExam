@@ -16,7 +16,9 @@ $(function () {
 function login(){
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
-
+    if(username === "" || password === ""){
+        loginFail();
+    }
 
     var loginRequest = {
         username: username,
